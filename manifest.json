@@ -1,7 +1,7 @@
 {
     "name": "Pi-hole stats",
     "version": "1.0.09",
-    "description": "View your Pi-hole statis in one click.",
+    "description": "View your Pi-hole stats in one click.",
     "permissions": [
         "storage",
         "http://pi.hole/*"

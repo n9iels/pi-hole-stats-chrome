@@ -1,7 +1,10 @@
 # Pi-hole stats for Google Chrome
-Browser extension for Google Chrome to view your Pi-hole statis in one click.
+Browser extension for Google Chrome to view your Pi-hole stats in one click.
 
 ![alt text](screenshot.PNG "Screenshot of the Pi-hole extension")
+
+## Prerequisites
+A PC connected to a Pi-hole in your locale network.
 
 ## Installation
 1. Clone the repository or download it as ZIP
