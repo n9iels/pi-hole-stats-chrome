@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="http://pi.hole/">
+    <link href="admin/style/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="admin/style/vendor/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="admin/style/vendor/skin-blue.min.css" rel="stylesheet" type="text/css" />
+    <link href="admin/style/pi-hole.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <style>
+        body {
+            min-width: 300px;
+            padding: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .footer {
+            text-align: right;
+        }
+    </style>
+    <div id="stats">
+        <div class="small-box bg-green">
+            <div class="inner">
+                <p>Total queries</p>
+                <h3 class="statistic"><span id="dns_queries_today" class=""></span></h3>
+            </div>
+        </div>
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <p>Queries Blocked</p>
+                <h3 class="statistic"><span id="ads_blocked_today" class=""></span></h3>
+            </div>
+        </div>
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <p>Percent Blocked</p>
+                <h3 class="statistic"><span id="ads_percentage_today" class=""></span></h3>
+            </div>
+        </div>
+        <div class="small-box bg-red">
+            <div class="inner">
+                <p>Domains on Blocklist</p>
+                <h3 class="statistic"><span id="domains_being_blocked"></span></h3>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="http://pi.hole/admin" target="_blank">Go to admin</a>
+        </div>
+    </div>
+    <div id="error" class="hidden">
+        <div class="alert alert-error">Stats could not be loaded. Are you connected to your Pi-hole?</div>
+    </div>
+    <script>
+        fetch("http://pi.hole/admin/api.php?summaryRaw")
+            .then(res => res.json())
+            .then(json => {
+                document.getElementById("ads_percentage_today").innerText = Math.round(json.ads_percentage_today * 10) / 10 + "%";
+                document.getElementById("dns_queries_today").innerText = json.dns_queries_today.toLocaleString();
+                document.getElementById("ads_blocked_today").innerText = json.ads_blocked_today.toLocaleString();
+                document.getElementById("domains_being_blocked").innerText = json.domains_being_blocked.toLocaleString();
+            })
+            .catch(_ => {
+                document.getElementById("stats").className = "hidden";
+                document.getElementById("error").className = "";
+            });
+    </script>
+</body>
+
+</html>

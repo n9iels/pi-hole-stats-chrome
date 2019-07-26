@@ -1,0 +1,26 @@
+{
+    "name": "Pi-hole stats",
+    "version": "1.0.09",
+    "description": "View your Pi-hole statis in one click.",
+    "permissions": [
+        "storage",
+        "http://pi.hole/*"
+    ],
+    "content_security_policy": "script-src 'sha256-1Nu/ZRy4ExOlniK5iDJejOzq5RRL0b4JzkzY9YJu5Vc='; object-src 'self'",
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon-16x16.png",
+            "32": "images/icon-32x32.png",
+            "48": "images/icon-48x48.png",
+            "128": "images/icon-128x128.png"
+        }
+    },
+    "icons": {
+        "16": "images/icon-16x16.png",
+        "32": "images/icon-32x32.png",
+        "48": "images/icon-48x48.png",
+        "128": "images/icon-128x128.png"
+    },
+    "manifest_version": 2
+}
